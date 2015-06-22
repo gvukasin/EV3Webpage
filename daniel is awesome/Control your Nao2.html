@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<!-- saved from url=(0043)http://130.64.96.109/Nao/index_general.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Daniel de Cordoba">
+    <link rel="icon" href="http://130.64.96.109/Nao/control/images/naoicon.png">
+
+    <title>Control your Nao</title>
+
+	<!-- Letter for the switch buttons-->
+	<link href="http://130.64.96.109/Nao/control/css/switch-style.css" rel="stylesheet">
+	
+    <!-- Bootstrap core CSS -->
+    <link href="http://130.64.96.109/Nao/control/css/bootstrap.min.css" rel="stylesheet">
+	
+	<!-- More things for the switch button -->
+    <link href="http://130.64.96.109/Nao/control/css/highlight.css" rel="stylesheet">
+    <link href="http://130.64.96.109/Nao/control/css/bootstrap-switch.css" rel="stylesheet">
+    
+    <!-- Custom styles for this template -->
+    <link href="http://130.64.96.109/Nao/control/dashboard.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body id="nao_general">
+  
+    <nav id="menu_xs" class="navbar navbar-default" role="navigation" style="display: none;">
+	  <div id="menu_xs_div" class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div id="menu_xs_div_div" class="navbar-header">
+		  <button id="menu_xs_button" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topbar_xs">
+			<span id="menu_xs_span1" class="sr-only">Toggle navigation</span>
+			<span id="menu_xs_span2" class="icon-bar"></span>
+			<span id="menu_xs_span3" class="icon-bar"></span>
+			<span id="menu_xs_span4" class="icon-bar"></span>
+		  </button>
+		  <a id="menu_xs_a" class="navbar-brand" href="http://130.64.96.109/Nao/index_general.html#">Menu</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div id="topbar_xs" class="collapse navbar-collapse">
+		  <ul id="topbar_xs_ul" class="nav nav-pills nav-stacked">
+			<li class="active"><a id="topbar_xs_general" href="">General</a></li>
+			<li><a id="topbar_xs_speech" href="http://130.64.96.109/Nao/index_speech.html">Speech and sound</a></li>
+			<li><a id="topbar_xs_actions" href="http://130.64.96.109/Nao/index_actions.html">Actions</a></li>
+			<li><a id="topbar_xs_movement" href="http://130.64.96.109/Nao/index_movement.html">Movement</a></li>
+			<li><a id="topbar_xs_control" href="http://130.64.96.109/Nao/index_control.html">Joints control</a></li>
+			<li><a id="topbar_xs_advanced" href="http://130.64.96.109/Nao/index_advanced.html">Advanced</a></li>
+			<li><a href="" id="conn_mngr" onclick="testConnection()" data-toggle="modal" data-backdrop="false" data-target="#connectionManager">Connection</a></li>
+			<li><a id="topbar_xs_help" href="javascript:void(0);" data-toggle="modal" data-backdrop="false" data-target="#helpInfo">Help</a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" id="menu_sm" style="display: block;">
+          <ul id="menu_sm_ul" class="nav nav-sidebar">
+            <li class="active"><a id="menu1" href="">General</a></li>
+            <li><a id="menu2" href="http://130.64.96.109/Nao/index_speech.html">Speech and sound</a></li>
+            <li><a id="menu3" href="http://130.64.96.109/Nao/index_actions.html">Actions</a></li>
+            <li><a id="menu4" href="http://130.64.96.109/Nao/index_movement.html">Movement</a></li>
+            <li><a id="menu5" href="http://130.64.96.109/Nao/index_control.html">Joints control</a></li>
+			<li><a id="menu6" href="http://130.64.96.109/Nao/index_advanced.html">Advanced</a></li>
+          </ul>
+		  
+          <ul class="nav navbar-default navbar-fixed-bottom col-sm-3 col-md-2" id="menu_sm_bottom_ul">
+			<li><a href="" id="conn_mngr" onclick="testConnection()" data-toggle="modal" data-backdrop="false" data-target="#connectionManager">Connection</a></li>
+			<li><a href="" id="help_menu" data-toggle="modal" data-backdrop="false" data-target="#helpInfo">Help</a></li>
+		  </ul>
+		</div>
+		
+		<div id="main_div" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		  
+		  <!-- Connection -->
+		  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-header_title" aria-hidden="true" id="connectionManager">
+		  <div id="connectionManager_div" class="modal-dialog">
+			<div id="connectionManager_div_div" class="modal-content">
+			  <div id="modal-header" class="modal-header">
+				<button id="modal-header_button1" type="button" class="close" data-dismiss="modal">
+				  <span id="modal-header_button1_times" aria-hidden="true">×</span>
+				  <span id="modal-header_button1_close" class="sr-only">Close</span>
+				</button>
+				<h1 class="modal-title centeredthing" id="modal-header_title">Connection</h1>
+			  </div>
+			  <div id="modal-body" class="modal-body">
+				<h4 id="modal-body_title" class="centeredthing">Type the name of your Nao or its IP and click connect</h4>
+				<br>
+				
+				<form id="modal-body_form1" class="form-horizontal col-sm-8" role="form">
+				  <div id="modal-body_form1_div" class="input-group">
+					<input type="text" class="form-control" placeholder="e.g. nao, wilma, fred, 172.16.136.243" id="hostname" title="Type the name of the Nao (if it does not have a name, type nao) or its IP (press Nao&#39;s chest button to know its IP)">
+					<span id="modal-body_form1_addon" class="input-group-addon"></span>
+				  </div>
+				</form>
+				
+				<form id="modal-body_form2" class="form-horizontal col-sm-4" role="form">
+				  <button id="modal-body_form2_button" class="btn btn-info btn-block" type="button" onclick="connectToNao()" title="Connect to the selected Nao">Connect</button>
+				  <br>
+				</form>
+				
+				<div id="modal-body_div1" class="col-sm-12">
+				  <div id="conn_alert" class="alert alert-danger" role="alert">
+					<p id="conn_result"><b>Connection failed!</b> It was not possible to connect with Nao.</p>
+				  </div>
+				</div>
+				<br><br><br><br><br><br>
+			  </div>
+			  <div id="modal-footer" class="modal-footer">
+				<button id="modal-footer_button" type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+				<!--<button type="button" class="btn btn-primary">Save changes</button>-->
+			  </div>
+			</div>
+		  </div>
+		  </div>
+		  
+		  <!-- Help -->
+		  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="helpInfo">
+		  <div id="help1" class="modal-dialog">
+			<div id="help2" class="modal-content">
+			  <div id="help3" class="modal-header">
+				<button id="help4" type="button" class="close" data-dismiss="modal">
+				  <span id="help5" aria-hidden="true">×</span>
+				  <span id="help6" class="sr-only">Close</span>
+				</button>
+				<h1 class="modal-title centeredthing" id="myModalLabel">Help</h1>
+			  </div>
+			  <div id="help7" class="modal-body">
+				<br>
+				<p>Click the button next to the Camera title to show or hide the images acquired by Nao. Secret: if you click on the video image, you can change the camera you are using.</p>
+				<br>
+				<p>Use the buttons with footsteps to make Nao move around. To stop movement, use the Stop button.</p>
+				<br>
+				<p>Click the button with Nao heads to change the direction where the Nao is looking. To center the head, click the center button.</p>
+				<br>
+				<p>Type something in the text field next to the "Say it!" button and click it to make Nao say it.</p>
+				<br>
+				<p>Click the actions buttons to make Nao perform such actions.</p>
+				<br>
+				<p>Under the Sensors title, the sensors indicators can be seen. To start or stop the data acquisition from Nao, click the button next to Sensors.</p>
+				<br>
+				<p>If you need more information, put the mouse over the desired field and a small tip will pop up giving clues of its use.</p>
+				<br>
+				<p>Click "Close Help" to leave help and return to the main screen.</p>
+				<br>
+			  </div>
+			  <div id="help8" class="modal-footer">
+  				<!--<a class="btn btn-danger" href="index.html">Go to Nao's Homepage</a>-->
+				<button id="help9" type="button" class="btn btn-primary" data-dismiss="modal">Close Help</button>
+				<!--<button type="button" class="btn btn-primary">Save changes</button>-->
+			  </div>
+			</div>
+		  </div>
+		  </div>
+		  
+		  <div id="camera_div" class="col-xs-12  col-md-6">
+			<h1 class="page-header centeredthing" id="titleCam">Camera <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-on bootstrap-switch-normal bootstrap-switch-animate bootstrap-switch-id-showImg"><div class="bootstrap-switch-container"><span class="bootstrap-switch-handle-on bootstrap-switch-primary">Show</span><label class="bootstrap-switch-label">&nbsp;</label><span class="bootstrap-switch-handle-off bootstrap-switch-default">Hide</span><input id="showImg" type="checkbox" data-size="normal" checked="" data-on-text="Show" data-off-text="Hide"></div></div></h1>
+		    <div id="camera_div_div" class="thumbnail">
+  		      <img alt="Video" src="data:image/png;base64,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" onclick="sendData(&#39;changeCam&#39;)" border="0" width="100%" id="video">
+			</div>
+		  </div>
+		  
+		  <div id="move_div" class="col-xs-12 col-sm-6 col-md-3">
+		    <!-- MOVE -->
+			<h1 id="move_title" class="page-header centeredthing">Move</h1>
+		    <p>
+			  <img id="move_img" name="Move Controls" src="./Control your Nao2_files/steps.jpg" usemap="#stepsmap" border="0" width="100%">
+			</p>
+
+			<map id="move_map" name="stepsmap">
+			  <area id="move1" alt="Up-Left" title="Make Nao walk Forward-Left" onclick="getData(&#39;walk Up-Left&#39;)" href="javascript:void(0);" shape="rect" coords="0,0,115,115" style="outline:none;" target="_self">
+			  <area id="move2" alt="Up" title="Make Nao walk Forward" onclick="getData(&#39;walk Up&#39;)" href="javascript:void(0);" shape="rect" coords="115,0,230,115" style="outline:none;" target="_self">
+			  <area id="move3" alt="Up-Right" title="Make Nao walk Forward-Right" onclick="getData(&#39;walk Up-Right&#39;)" href="javascript:void(0);" shape="rect" coords="230,0,329,115" style="outline:none;" target="_self">
+			  <area id="move4" alt="Left" title="Make Nao walk Left" onclick="getData(&#39;walk Left&#39;)" href="javascript:void(0);" shape="rect" coords="0,115,115,230" style="outline:none;" target="_self">
+			  <area id="move5" alt="Center" title="Make Nao Stop" onclick="getData(&#39;walk Center&#39;)" href="javascript:void(0);" shape="rect" coords="115,115,230,230" style="outline:none;" target="_self">
+			  <area id="move6" alt="Right" title="Make Nao walk Right" onclick="getData(&#39;walk Right&#39;)" href="javascript:void(0);" shape="rect" coords="230,115,329,230" style="outline:none;" target="_self">
+			  <area id="move7" alt="Down-Left" title="Make Nao walk Backwards-Left" onclick="getData(&#39;walk Down-Left&#39;)" href="javascript:void(0);" shape="rect" coords="0,230,115,329" style="outline:none;" target="_self">
+			  <area id="move8" alt="Down" title="Make Nao walk Backwards" onclick="getData(&#39;walk Down&#39;)" href="javascript:void(0);" shape="rect" coords="115,230,230,329" style="outline:none;" target="_self">
+			  <area id="move9" alt="Down-Right" title="Make Nao walk Backwards-Right" onclick="getData(&#39;walk Down-Right&#39;)" href="javascript:void(0);" shape="rect" coords="230,230,329,329" style="outline:none;" target="_self">
+			</map>
+		  </div>
+		  <div id="look_div" class="col-xs-12 col-sm-6 col-md-3">
+		    <!-- LOOK -->
+			<h1 id="look_title" class="page-header centeredthing">Look</h1>
+		    <p>
+			  <img id="look_img" name="Head Controls" src="./Control your Nao2_files/head.jpg" usemap="#headmap" border="0" width="100%">
+			</p>
+
+			<map name="headmap">
+			  <area id="look1" alt="Up-Left" title="Make Nao look Up-Left" onclick="getData(&#39;head Up-Left&#39;)" href="javascript:void(0);" shape="rect" coords="0,0,115,115" style="outline:none;" target="_self">
+			  <area id="look2" alt="Up" title="Make Nao look Up" onclick="getData(&#39;head Up&#39;)" href="javascript:void(0);" shape="rect" coords="115,0,230,115" style="outline:none;" target="_self">
+			  <area id="look3" alt="Up-Right" title="Make Nao look Up-Right" onclick="getData(&#39;head Up-Right&#39;)" href="javascript:void(0);" shape="rect" coords="230,0,329,115" style="outline:none;" target="_self">
+			  <area id="look4" alt="Left" title="Make Nao look Left" onclick="getData(&#39;head Left&#39;)" href="javascript:void(0);" shape="rect" coords="0,115,115,230" style="outline:none;" target="_self">
+			  <area id="look5" alt="Center" title="Make Nao look Straight" onclick="getData(&#39;head Center&#39;)" href="javascript:void(0);" shape="rect" coords="115,115,230,230" style="outline:none;" target="_self">
+			  <area id="look6" alt="Right" title="Make Nao look Right" onclick="getData(&#39;head Right&#39;)" href="javascript:void(0);" shape="rect" coords="230,115,329,230" style="outline:none;" target="_self">
+			  <area id="look7" alt="Down-Left" title="Make Nao look Down-Left" onclick="getData(&#39;head Down-Left&#39;)" href="javascript:void(0);" shape="rect" coords="0,230,115,329" style="outline:none;" target="_self">
+			  <area id="look8" alt="Down" title="Make Nao look Down" onclick="getData(&#39;head Down&#39;)" href="javascript:void(0);" shape="rect" coords="115,230,230,329" style="outline:none;" target="_self">
+			  <area id="look9" alt="Down-Right" title="Make Nao look Down-Right" onclick="getData(&#39;head Down-Right&#39;)" href="javascript:void(0);" shape="rect" coords="230,230,329,329" style="outline:none;" target="_self">
+			</map>
+		  </div>
+		
+		  <!-- SAY -->
+		  <h1 id="say_title" class="page-header centeredthing">Say</h1>
+		  <div id="say_div" class="input-group nav">
+			<input type="text" class="form-control" value="" placeholder="Type here what Nao will say" id="say_speech">
+			<span id="say_span" class="input-group-btn">
+			  <button id="say_button" onclick="getData(&#39;say_speech&#39;)" class="btn btn-primary" type="button" data-toggle="tooltip" title="Say the text written in the box">Say it!</button>
+			</span>
+		  </div><!-- /input-group -->
+		  
+		  <div id="footer_div" class="col-md-12">
+		    <!-- ACTIONS -->
+		    <div id="footer_div_div" class="col-xs-12 col-sm-6 col-md-6">
+			  <h1 id="actions_title" class="page-header centeredthing">Actions</h1>
+			  <div id="actions_div_stand" class="col-xs-4 col-md-2 halfwider">
+				<a id="actions_a_stand" onclick="sendData(&#39;posture Stand&#39;)" href="javascript:void(0);" class="thumbnail">
+				  <img id="actions_img_stand" data-src="holder.js/100%x180" alt="Stand" src="./Control your Nao2_files/posture_stand4.png" data-toggle="tooltip" title="Click to make the nao stand">
+				  <p id="actions_p_stand">Stand</p>
+				</a>
+			  </div>
+			  <div id="actions_div_sit" class="col-xs-4 col-md-2 halfwider">
+				<a id="actions_a_sit" onclick="sendData(&#39;posture Sit&#39;)" href="javascript:void(0);" class="thumbnail">
+				  <img id="actions_img_sit" data-src="holder.js/100%x180" alt="Sit" src="./Control your Nao2_files/posture_sit2.png" data-toggle="tooltip" title="Click to make the nao sit">
+				  <p id="actions_p_sit">Sit</p>
+				</a>
+			  </div>
+			  <div id="actions_div_lay" class="col-xs-4 col-md-2 halfwider">
+				<a id="actions_a_lay" onclick="sendData(&#39;posture LyingBack&#39;)" href="javascript:void(0);" class="thumbnail">
+				  <img id="actions_img_lay" data-src="holder.js/100%x180" alt="Lay" src="./Control your Nao2_files/posture_lyingback2.png" data-toggle="tooltip" title="Click to make the nao lay back">
+				  <p id="actions_a_lay">Lay</p>
+				</a>
+			  </div>
+			  <div id="actions_div_rest" class="col-xs-4 col-md-2 halfwider">
+				<a id="actions_a_rest" onclick="sendData(&#39;relax&#39;)" href="javascript:void(0);" class="thumbnail">
+				  <img id="actions_img_rest" data-src="holder.js/100%x180" alt="Relax / Rest" src="./Control your Nao2_files/posture_crouch2.png" data-toggle="tooltip" title="Click to make the nao rest (stops all motors)">
+				  <p id="actions_p_rest">Rest</p>
+				</a>
+			  </div>
+			  <div id="actions_div_action" class="col-xs-4 col-md-2 halfwider">
+				<a id="actions_a_action" onclick="sendData(&#39;randomaction&#39;)" href="javascript:void(0);" class="thumbnail">
+				  <img id="actions_img_action" data-src="holder.js/100%x180" alt="Action" src="./Control your Nao2_files/posture_wave.png" data-toggle="tooltip" title="Click to make the nao do a random action">
+				  <p id="actions_p_action">Action</p>
+				</a>
+			  </div>
+			  <div id="actions_div_dance" class="col-xs-4 col-md-2 halfwider">
+				<a id="actions_a_dance" onclick="sendData(&#39;randomdance&#39;)" href="javascript:void(0);" class="thumbnail">
+				  <img id="actions_img_dance" data-src="holder.js/100%x180" alt="Dance" src="./Control your Nao2_files/posture_dance.png" data-toggle="tooltip" title="Click to make the nao dance something">
+				  <p id="actions_p_dance">Dance</p>
+				</a>
+			  </div>
+			</div>
+		  
+		  	<!-- SENSORS -->
+		    <div id="sensors_div" class="col-xs-12 col-sm-6 col-md-6">
+			  <h1 class="page-header centeredthing">Sensors <div class="bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-on bootstrap-switch-normal bootstrap-switch-animate bootstrap-switch-id-showTouch"><div class="bootstrap-switch-container"><span class="bootstrap-switch-handle-on bootstrap-switch-primary">Show</span><label class="bootstrap-switch-label">&nbsp;</label><span class="bootstrap-switch-handle-off bootstrap-switch-default">Hide</span><input id="showTouch" type="checkbox" data-size="normal" checked="" data-on-text="Show" data-off-text="Hide"></div></div></h1>
+			  <div id="sensors_div_head" class="col-xs-4 col-md-2 halfwider">
+				<a id="sensors_a_head" href="javascript:void(0);" class="thumbnail">
+				  <img data-src="holder.js/100%x180" alt="head off" src="./Control your Nao2_files/sense_head_off.png" data-toggle="tooltip" title="Head sensor indicator" id="sense_head">
+				  <p id="sensors_p_head">Head</p>
+				</a>
+			  </div>
+			  <div id="sensors_div_rhand" class="col-xs-4 col-md-2 halfwider">
+				<a id="sensors_a_rhand" href="javascript:void(0);" class="thumbnail">
+				  <img data-src="holder.js/100%x180" alt="right hand off" src="./Control your Nao2_files/sense_rarm_off.png" data-toggle="tooltip" title="Right hand sensor indicator" id="sense_rarm">
+				  <p id="sensors_p_rhand">R Hand</p>
+				</a>
+			  </div>
+			  <div id="sensors_div_lhand" class="col-xs-4 col-md-2 halfwider">
+				<a id="sensors_a_lhand" href="javascript:void(0);" class="thumbnail">
+				  <img data-src="holder.js/100%x180" alt="left hand off" src="./Control your Nao2_files/sense_larm_off.png" data-toggle="tooltip" title="Left hand sensor indicator" id="sense_larm">
+				  <p id="sensors_p_lhand">L Hand</p>
+				</a>
+			  </div>
+			  <div id="sensors_div_rfoot" class="col-xs-4 col-md-2 halfwider">
+				<a id="sensors_a_rfoot" href="javascript:void(0);" class="thumbnail">
+				  <img data-src="holder.js/100%x180" alt="right foot off" src="./Control your Nao2_files/sense_rfoot_off.png" data-toggle="tooltip" title="Right foot sensor indicator" id="sense_rfoot">
+				  <p id="sensors_p_rfoot">R Foot</p>
+				</a>
+			  </div>
+			  <div id="sensors_div_lfoot" class="col-xs-4 col-md-2 halfwider">
+				<a id="sensors_a_lfoot" href="javascript:void(0);" class="thumbnail">
+				  <img data-src="holder.js/100%x180" alt="left foot off" src="./Control your Nao2_files/sense_lfoot_off.png" data-toggle="tooltip" title="Left foot sensor indicator" id="sense_lfoot">
+				  <p id="sensors_p_lfoot">L Foot</p>
+				</a>
+			  </div>
+			  <div id="sensors_div_chest" class="col-xs-4 col-md-2 halfwider">
+				<a id="sensors_a_chest" href="javascript:void(0);" class="thumbnail">
+				  <img data-src="holder.js/100%x180" alt="chest button off" src="./Control your Nao2_files/sense_chest_off.png" data-toggle="tooltip" title="Chest button indicator" id="sense_chest">
+				  <p id="sensors_p_chest">Chest</p>
+				</a>
+			  </div>
+			</div>
+		  </div>
+		</div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	<script src="./Control your Nao2_files/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- Import jquery from Google CDN -->
+    <script src="./Control your Nao2_files/bootstrap.min.js"></script>
+    <!--<script src="control/js/docs.min.js"></script>-->
+	<script src="./Control your Nao2_files/highlight.js"></script>
+    <script src="./Control your Nao2_files/bootstrap-switch.js"></script>
+    <script src="./Control your Nao2_files/main.js"></script>
+	
+	<script> <!-- Change appearance when resizing -->
+		window.addEventListener("resize", selectAppeareance); <!-- Waits for resizement of the screen -->
+		
+		function selectAppeareance() {
+			if ($(window).width() < 751) {
+				// do something for extra small screens (smartphones, etc.)
+				document.getElementById('menu_xs').style.display = 'block';
+				document.getElementById('menu_sm').style.display = 'none';
+			} else {
+				// do something for not extra small screens
+				document.getElementById('menu_xs').style.display = 'none';
+				document.getElementById('menu_sm').style.display = 'block';
+			}
+
+			resizeMaps(); //Resizes map
+		}
+		
+		//Initialize things to resize faster
+		var images = document.getElementsByTagName("img"), originalImgs = [], img, imgsLoaded = 0;
+		var maps = document.getElementsByTagName("map");  //Get all maps
+		var coords = [], areas = [];
+		for (var j = 0; j < maps.length; j++) { //For every map we do:
+			areas[j] = maps[j].getElementsByTagName("area"); //Get all areas in the map
+			coords[j] = Array.prototype.map.call(areas[j], function(curArea){ return curArea.coords; }); //Array of strings with all coords in the map
+		}
+		for (j = 0; j < images.length; j++) { //We save in originalImgs all images with a map associated and load them
+			if (images[j].useMap != "") {
+				img = new Image();
+				img.onload = function() { imgsLoaded++; }
+				img.useMap = images[j].useMap;
+				img.name = images[j].name;
+				img.src = images[j].src;
+				originalImgs[images[j].name] = img;
+			}
+		}
+		
+		function resizeMaps() {
+			function waitImgsToLoad() {
+				if (originalImgs.length > imgsLoaded) {
+					window.setTimeout(waitImgsToLoad, 100); //Recursive, does not map until the originalImgs have loaded
+				} else {
+					var curWidth = $(window).width(), curHeight = $(window).height(), checking=false; //We get the size of the screen
+					if (checking) { return; } //To avoid doing the same many times
+					checking = true;
+					window.setTimeout( function() { //Waits the time selected and executes function
+						var newWidth = $(window).width(), newHeight = $(window).height(), //We get the size of the screen after 100 ms
+							img, newCoords, i, j, k, wFactor, hFactor;
+						if (newWidth === curWidth && newHeight === curHeight) { //We only resize mapping when window is not being resized anymore
+							for (i = 0; i < maps.length; i++) { //For every map we do:
+								img = document.querySelector('img[usemap="#'+maps[i].name+'"]'); //We get the image that uses such map
+						
+								if (img.width!==originalImgs[img.name].width || img.height!==originalImgs[img.name].height) { //If W or H is not as in the original
+									for (j = 0; j < areas[i].length; j++) { //For every area we do:
+										newCoords = coords[i][j];
+										newCoords = newCoords.split(",").map(Number);
+										wFactor = img.width/originalImgs[img.name].width; //Calcuate correction factor
+										hFactor = img.height/originalImgs[img.name].height; //Calculate correction factor
+										for (k = 0; k < newCoords.length; k++) {
+											if (k%2 == 0) {
+												newCoords[k] = Math.floor(newCoords[k]*wFactor);
+											} else {
+												newCoords[k] = Math.floor(newCoords[k]*hFactor);
+											}
+										}
+										newCoords = newCoords.join(",");
+										areas[i][j].coords = newCoords;
+									}
+								}
+							}
+						}					
+						checking=false;
+					}, 100); //We check every 100ms if the resize is over
+				}	
+			}
+			waitImgsToLoad();
+		}
+		
+		window.onload = selectAppeareance;
+	</script>
+	
+	<script> <!-- Used to get all the data depending on the field selected -->
+	"use strict";
+	function getData(str) {
+		if (str.length == 0) {
+			//Error, something happened
+			return;
+		}
+		var error = false;
+		var res = str.split(" ");
+		var mssg = "";
+		switch(res[0]) {
+			case "say_speech":
+				var txt_to_say = document.getElementById("say_speech").value;
+				if(txt_to_say.length == 0){ error = true; }
+				mssg = mssg.concat("say ",txt_to_say);
+				break;
+			case "walk": //By now, we don't consider speed
+				var walk_dist = "0.1"; //10 cm
+				var walk_dist2 = "0.2"; //20 cm
+				var walk_speed = "0.5"; //Half speed
+				switch(res[1]) {
+					case "Up-Left":
+						mssg = mssg.concat("walk ",walk_dist," ",walk_dist," 0.7 ",walk_speed);
+						break;
+					case "Up":
+						mssg = mssg.concat("walk ",walk_dist," 0 0 ",walk_speed);
+						break;
+					case "Up-Right":
+						mssg = mssg.concat("walk ",walk_dist," -",walk_dist," -0.7 ",walk_speed);
+						break;
+					case "Left":
+						mssg = mssg.concat("walk ",walk_dist," ",walk_dist2," 1.4 ",walk_speed);
+						break;
+					case "Center":
+						mssg = "halt";
+						break;
+					case "Right":
+						mssg = mssg.concat("walk ",walk_dist," -",walk_dist2," -1.4 ",walk_speed);
+						break;
+					case "Down-Left":
+						mssg = mssg.concat("walk -",walk_dist," -",walk_dist," -0.7 ",walk_speed);
+						break;
+					case "Down":
+						mssg = mssg.concat("walk -",walk_dist," 0 0 ",walk_speed);
+						break;
+					case "Down-Right":
+						mssg = mssg.concat("walk -",walk_dist," ",walk_dist," 0.7 ",walk_speed);
+						break;
+					default:
+						error = true;
+				}
+				break;
+			case "head":
+				var head_angle = "0.25"; //Aprox 6 deg
+				var head_speed = "0.1"; //10% of max
+				switch(res[1]) {
+					case "Up-Left":
+						mssg = mssg.concat("headDir ",head_angle," -",head_angle," ",head_speed);
+						break;
+					case "Up":
+						mssg = mssg.concat("headDir 0 -",head_angle," ",head_speed);
+						break;
+					case "Up-Right":
+						mssg = mssg.concat("headDir -",head_angle," -",head_angle," ",head_speed);
+						break;
+					case "Left":
+						mssg = mssg.concat("headDir ",head_angle," 0 ",head_speed);
+						break;
+					case "Center":
+						mssg = mssg.concat("head 0 0 ",head_speed);
+						break;
+					case "Right":
+						mssg = mssg.concat("headDir -",head_angle," 0 ",head_speed);
+						break;
+					case "Down-Left":
+						mssg = mssg.concat("headDir ",head_angle," ",head_angle," ",head_speed);
+						break;
+					case "Down":
+						mssg = mssg.concat("headDir 0 ",head_angle," ",head_speed);
+						break;
+					case "Down-Right":
+						mssg = mssg.concat("headDir -",head_angle," ",head_angle," ",head_speed);
+						break;
+					default:
+						error = true;
+				}
+				break;
+			default:
+				error = true;
+		}
+		if (!error) {
+			sendData(mssg);
+		}
+	}
+	</script>
+	
+	<script> <!-- Used to send commands to php which will communicate with the nao -->
+	"use strict";
+	function sendData(str) {
+	    var xmlhttp;
+		if (str.length == 0) {
+			//document.getElementById("answer").innerHTML = "";
+			return;
+		}
+		if (window.XMLHttpRequest) {
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else { // code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+		  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		    var answer = xmlhttp.responseText;
+			saveData("Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], PhpFile:[test.php], Argument:[dataN:(" + str + ")], Answer:[" + answer + "]");
+			if (xmlhttp.responseText.slice(0,17) == "Connection_Error:") {
+			  document.getElementById("conn_alert").className = "alert alert-danger";
+			  document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> It was not possible to connect with Nao.";
+			  document.getElementById('conn_mngr').click();
+			  conn_ok = false;
+			} else {
+			  conn_ok = true;
+		    }
+			//var x = xmlhttp.responseText;
+			//console.log(x.length, x);
+		  }
+		}
+		xmlhttp.open("GET","test.php?dataN="+str,true);
+		xmlhttp.send();
+	}
+	</script>
+	
+	<script> <!-- Used to show the images of the sensor indicators -->
+	"use strict";
+	function showSensors(answer) {
+		if (answer.slice(0,17) == "Connection_Error:") {
+			document.getElementById("conn_alert").className = "alert alert-danger";
+			document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> It was not possible to connect with Nao.";
+			//document.getElementById('conn_mngr').click(); //For some reason, this makes it crash often
+			conn_ok = false;
+		} else {
+			conn_ok = true;
+		}
+		var sense_value = parseInt(answer);
+		if (isNaN(sense_value)){ sense_value = 0; }
+		var image = document.getElementById('sense_head');
+		switch (sense_value%8) {
+			case 0:
+				image.src = "control/images/sense_head_off.png";
+				image.alt = "head off";
+				break;
+			case 1:
+				image.src = "control/images/sense_head_on_f.png";
+				image.alt = "head front on";
+				break;
+			case 2:
+				image.src = "control/images/sense_head_on_m.png";
+				image.alt = "head middle on";
+				break;
+			case 3:
+				image.src = "control/images/sense_head_on_fm.png";
+				image.alt = "head front and middle on";
+				break;
+			case 4:
+				image.src = "control/images/sense_head_on_r.png";
+				image.alt = "head rear on";
+				break;
+			case 5:
+				image.src = "control/images/sense_head_on_fr.png";
+				image.alt = "head front and rear on";
+				break;
+			case 6:
+				image.src = "control/images/sense_head_on_mr.png";
+				image.alt = "head middle and rear on";
+				break;
+			case 7:
+				image.src = "control/images/sense_head_on_fmr.png";
+				image.alt = "head front, middle and rear on";
+				break;
+		}
+		sense_value = ~~(sense_value/8);
+		image = document.getElementById('sense_larm');
+		if (sense_value%2 == 1) {
+			image.src = "control/images/sense_larm_on.png";
+			image.alt = "left hand on";
+		} else {
+			image.src = "control/images/sense_larm_off.png";
+			image.alt = "left hand off";
+		}
+		sense_value = ~~(sense_value/2);
+		image = document.getElementById('sense_rarm');
+		if (sense_value%2 == 1) {
+			image.src = "control/images/sense_rarm_on.png";
+			image.alt = "right hand on";
+		} else {
+			image.src = "control/images/sense_rarm_off.png";
+			image.alt = "right hand off";
+		}
+		sense_value = ~~(sense_value/2);
+		image = document.getElementById('sense_lfoot');
+		if (sense_value%2 == 1) {
+			image.src = "control/images/sense_lfoot_on.png";
+			image.alt = "left foot on";
+		} else {
+			image.src = "control/images/sense_lfoot_off.png";
+			image.alt = "left foot off";
+		}
+		sense_value = ~~(sense_value/2);
+		image = document.getElementById('sense_rfoot');
+		if (sense_value%2 == 1) {
+			image.src = "control/images/sense_rfoot_on.png";
+			image.alt = "right foot on";
+		} else {
+			image.src = "control/images/sense_rfoot_off.png";
+			image.alt = "right foot off";
+		}
+		sense_value = ~~(sense_value/2);
+		image = document.getElementById('sense_chest');
+		if (sense_value%2 == 1) {
+			image.src = "control/images/sense_chest_on.png";
+			image.alt = "chest button on";
+		} else {
+			image.src = "control/images/sense_chest_off.png";
+			image.alt = "chest button off";
+		}
+	}
+	</script>
+	
+	<script> <!-- Used to show the video -->
+	//"use strict";
+	function showImage(answer) {
+		if (answer.slice(0,17) == "Connection_Error:") {
+			document.getElementById("conn_alert").className = "alert alert-danger";
+			document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> It was not possible to connect with Nao.";
+			//document.getElementById('conn_mngr').click(); //For some reason, this makes it crash often
+			conn_ok = false;
+		} else {
+			conn_ok = true;
+		}
+		var i = 0, j = 0;
+		var width = 0, height = 0;
+		var byteAnswer = [];
+		for (var i = 0; i < answer.length; i = i+2) { <!-- Converts string which is coded in hex, to numbers array -->
+			byteAnswer.push(parseInt(answer[i],16)*16 + parseInt(answer[i+1],16));
+		}
+		i = 0;
+		while (String.fromCharCode(byteAnswer[i]) != 'x' && i < 6){ <!-- Gets Width of image -->
+			width = 10*width + parseInt(String.fromCharCode(byteAnswer[i]));
+			i++;
+		}
+		i++;
+		while (String.fromCharCode(byteAnswer[i]) != ':' && i < 12){ <!-- Gets Height of image -->
+			height = 10*height + parseInt(String.fromCharCode(byteAnswer[i]));
+			i++;
+		}
+		i++;
+		byteAnswer = byteAnswer.slice(i);
+		var videoCanvas = createImageFromRGBdata(byteAnswer, width, height);
+		var imgDataUrl = videoCanvas.toDataURL();   // make a base64 string of the image data (the array above)
+		var image = document.getElementById('video');
+		image.src = imgDataUrl;
+	}
+	
+	function createImageFromRGBdata(rgbData, width, height) {
+		var mCanvas = document.createElement('canvas');
+		var mContext;
+		var mImgData;
+		if(isNaN(width) || isNaN(height) || width*height*3 != rgbData.length) {
+			width = 320;
+			height = 240;
+			//console.log("Error: ");
+			//console.log(width, height, rgbData.length, rgbData[0], rgbData[1], rgbData[2], rgbData[3]);
+			mCanvas.width = width;
+			mCanvas.height = height;
+			mContext = mCanvas.getContext('2d');
+			mContext.font = "30px Arial";
+			mContext.fillText("Video Error", 10, 50);
+			mImgData = mContext.createImageData(width, height);
+			mContext.putImageData(mImgData, 0, 0);
+			return mCanvas;
+		}
+		mCanvas.width = width;
+		mCanvas.height = height;
+		mContext = mCanvas.getContext('2d');
+		mImgData = mContext.createImageData(width, height);
+		//console.log("No Error: ");
+		//console.log(width, height, rgbData.length, rgbData[0], rgbData[1], rgbData[2], rgbData[3]);
+		var srcIndex=0, dstIndex=0, curPixelNum=0;
+		for (curPixelNum=0; curPixelNum < width*height;  curPixelNum++) {
+			mImgData.data[dstIndex] = rgbData[srcIndex];        // r
+			mImgData.data[dstIndex+1] = rgbData[srcIndex+1];    // g
+			mImgData.data[dstIndex+2] = rgbData[srcIndex+2];    // b
+			mImgData.data[dstIndex+3] = 255; // 255 = 0xFF - constant alpha, 100% opaque
+			srcIndex += 3;
+			dstIndex += 4;
+		}
+		mContext.putImageData(mImgData, 0, 0);
+		return mCanvas;
+	}
+	</script>
+	
+	<script> <!-- Used to request image and sensors data every 0.3 s -->
+	var poll = true;
+	var conn_ok = true;
+	function waitForMsg() {
+        /* This requests the url "test2.php" periodically
+        When it complete (or errors)*/
+		var str = "getTouch";
+		var str2 = "getSizeAndImage";
+		var splitter = " \0\nrandomThingVeryUnlikely\n\0 "; //The longer this is , the more unlikely it is to have an error
+		var showTouch = document.getElementById("showTouch").checked && poll && conn_ok;
+		var showImg = document.getElementById("showImg").checked && poll && conn_ok;
+		//var time = performance.now() - startTime;
+		//showDelay("delay" + time);
+		//startTime = performance.now();
+		//console.timeEnd("wait time ");
+		//console.time("ajax waits answer ");
+		$.ajax({
+			type: "GET",
+			url: "test2.php",
+			data: {
+				dataN1: str,
+				dataN2: str2,
+				sendDataN1: showTouch,
+				sendDataN2: showImg,
+				splitter: splitter
+			},
+			
+			async: true, /* If set to non-async, browser shows page as "Loading.."*/
+			cache: false,
+			timeout:50000, /* Timeout in ms (50s)*/
+
+			success: function(answer){ /* called when request to barge.php completes */
+				setTimeout( //Important, the first thing to be done is the timeout, to spend really 300 ms between img and img
+					waitForMsg, /* Request next message */
+					300 /* ..after 0.3 seconds */
+				);
+				ans = answer.split(splitter);
+				saveData("Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], PhpFile:[test2.php], Argument:[dataN1:(" + str + "), dataN2:(" + str2 + "), sendDataN1:(" + showTouch + "), sendDataN2:(" + showImg + ")], Answer:[" + ans[0] + "]");
+				//console.timeEnd("ajax waits answer ");
+				//console.time("ajax showing image ");
+				if (showImg) {
+					showImage(ans[1]);
+				} 
+				if(showTouch) {
+					showSensors(ans[0]);
+				}
+				//console.timeEnd("ajax showing image ");
+				//console.time("wait time ");
+			},
+			error: function(XMLHttpRequest, textStatus, errorThrown){
+				setTimeout(
+					waitForMsg, /* Try again */
+					5000); /* ..after 5 seconds */
+				saveData("Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], PhpFile:[test2.php], Argument:[dataN1:(" + str + "), dataN2:(" + str2 + "), sendDataN1:(" + showTouch + "), sendDataN2:(" + showImg + ")], Answer:[Connection_Error:]");
+				if (showImg) {
+					showImage("Connection_Error:");
+				}
+				if (showTouch) {
+					showSensors("Connection_Error:");
+				}
+				console.log("Error, server services not available. Be sure to activate Apache or whatever you are using with PHP...");
+			}
+		});
+    }
+	window.addEventListener('focus', function() { <!-- When we start looking at the screen -->
+		// code to start, prevents sending data all the time
+		poll = true;
+	});
+	window.addEventListener('blur', function() { <!-- When we stop looking at the screen -->
+		// code to stop, prevents sending data all the time
+		poll = false;
+	});
+	$(document).ready(function(){
+		//startTime = performance.now();
+		//console.time("wait time ");
+        waitForMsg(); /* Start the inital request (for the polling)*/
+    });
+	</script>
+	
+	<script> <!-- Tries to connect to a new address -->
+	function connectToNao() { 
+		var hostname = document.getElementById("hostname").value;
+		if (hostname.length == 0) {
+			document.getElementById("conn_alert").className = "alert alert-danger";
+			document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> The host name field is empty.";
+		} else {
+			if (window.XMLHttpRequest) {
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			} else { // code for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var answer = xmlhttp.responseText;
+					saveData("Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], PhpFile:[connect.php], Argument:[hostname:(" + hostname + ")], Answer:[" + answer + "]");
+					if (answer.split(" ")[0] == "Success") {
+						document.getElementById("conn_alert").className = "alert alert-success";
+						document.getElementById("conn_result").innerHTML = "<b>Connection successfull!</b> You can start controling Nao.";
+					} else {
+						document.getElementById("conn_alert").className = "alert alert-danger";
+						document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> The IP or host name typed are wrong.";
+					}
+				}
+			}
+			xmlhttp.open("GET","connect.php?hostname="+hostname,true);
+			xmlhttp.send();
+		}
+	}
+	
+	function testConnection() {
+		if (window.XMLHttpRequest) {
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else { // code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var answer = xmlhttp.responseText;
+				saveData("Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], PhpFile:[connect.php], Argument:[hostname:()], Answer:[" + answer + "]");
+				if (answer.split(" ")[0] == "Success") {
+					document.getElementById("conn_alert").className = "alert alert-success";
+					document.getElementById("conn_result").innerHTML = "<b>Connection successfull!</b> Your Nao is already connected.";
+				} else {
+					document.getElementById("conn_alert").className = "alert alert-danger";
+					document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> It was not possible to connect with Nao.";
+				}
+			}
+		}
+		xmlhttp.open("GET","connect.php?hostname=",true);
+		xmlhttp.send();
+	}
+	</script>
+	
+	<script> <!-- Saves the data for data mining -->
+	document.onclick = function() {
+		var input_values = Array.prototype.map.call(document.getElementsByTagName("input"), function(inp){ return "(" + inp.id + ": " + inp.value + ")" }).join(",");
+		var select_values = Array.prototype.map.call(document.getElementsByTagName("select"), function(inp){ return "(" + inp.id + ": " + inp.value + ")" }).join(",");
+		var textarea_values = Array.prototype.map.call(document.getElementsByTagName("textarea"), function(inp){ return "(" + inp.id + ": " + inp.value + ")" }).join(",");
+		var str = "Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], Tag:[" + window.event.srcElement.tagName + "], Id:[" + window.event.srcElement.id + "], Value:[" + window.event.srcElement.value + "], Class:[" + window.event.srcElement.class + "], InputValues:[" + input_values + "], SelectValues:[" + select_values + "], TextareaValues:[" + textarea_values + "]";
+		saveData(str);
+	}
+	
+	function saveData(str) {
+		var xmlhttp;
+		if (str.length == 0) {
+		  return;
+		}
+		if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else { // code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
+				//console.log(xmlhttp.responseText);
+			}
+		}
+		xmlhttp.open("GET","saveToFile.php?datatosave="+str,true);
+		xmlhttp.send();
+	}
+	</script>
+  
+
+</body></html>

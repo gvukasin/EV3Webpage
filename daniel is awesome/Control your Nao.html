@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://130.64.96.109/Nao/index_advanced.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Daniel de Cordoba">
+    <link rel="icon" href="http://130.64.96.109/Nao/control/images/naoicon.png">
+
+    <title>Control your Nao</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="http://130.64.96.109/Nao/control/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://130.64.96.109/Nao/control/dashboard.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body id="nao_advanced">
+
+    <nav id="menu_xs" class="navbar navbar-default" role="navigation" style="display: none;">
+	  <div id="menu_xs_div" class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div id="menu_xs_div_div" class="navbar-header">
+		  <button id="menu_xs_button" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topbar_xs">
+			<span id="menu_xs_span1" class="sr-only">Toggle navigation</span>
+			<span id="menu_xs_span2" class="icon-bar"></span>
+			<span id="menu_xs_span3" class="icon-bar"></span>
+			<span id="menu_xs_span4" class="icon-bar"></span>
+		  </button>
+		  <a id="menu_xs_a" class="navbar-brand" href="http://130.64.96.109/Nao/index_advanced.html#">Menu</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="topbar_xs">
+		  <ul id="topbar_xs_ul" class="nav nav-pills nav-stacked">
+			<li><a id="topbar_xs_general" href="http://130.64.96.109/Nao/index_general.html">General</a></li>
+			<li><a id="topbar_xs_speech" href="http://130.64.96.109/Nao/index_speech.html">Speech and sound</a></li>
+			<li><a id="topbar_xs_actions" href="http://130.64.96.109/Nao/index_actions.html">Actions</a></li>
+			<li><a id="topbar_xs_movement" href="http://130.64.96.109/Nao/index_movement.html">Movement</a></li>
+			<li><a id="topbar_xs_control" href="http://130.64.96.109/Nao/index_control.html">Joints control</a></li>
+			<li class="active"><a id="topbar_xs_advanced" href="">Advanced</a></li>
+			<li><a href="" id="conn_mngr" onclick="testConnection()" data-toggle="modal" data-backdrop="false" data-target="#connectionManager">Connection</a></li>
+			<li><a id="topbar_xs_help" href="javascript:void(0);" data-toggle="modal" data-backdrop="false" data-target="#helpInfo">Help</a></li>
+		  </ul>
+		</div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+  
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar" id="menu_sm" style="display: block;">
+          <ul id="menu_sm_ul" class="nav nav-sidebar">
+            <li><a id="menu1" href="http://130.64.96.109/Nao/index_general.html">General</a></li>
+            <li><a id="menu2" href="http://130.64.96.109/Nao/index_speech.html">Speech and sound</a></li>
+            <li><a id="menu3" href="http://130.64.96.109/Nao/index_actions.html">Actions</a></li>
+            <li><a id="menu4" href="http://130.64.96.109/Nao/index_movement.html">Movement</a></li>
+            <li><a id="menu5" href="http://130.64.96.109/Nao/index_control.html">Joints control</a></li>
+			<li class="active"><a id="menu6" href="">Advanced</a></li>
+          </ul>
+		  
+		  <ul id="menu_sm_bottom_ul" class="nav navbar-default navbar-fixed-bottom col-sm-3 col-md-2">
+  			<li><a href="" id="conn_mngr" onclick="testConnection()" data-toggle="modal" data-backdrop="false" data-target="#connectionManager">Connection</a></li>
+			<li><a href="" id="help_menu" data-toggle="modal" data-backdrop="false" data-target="#helpInfo">Help</a></li>
+		  </ul>
+        </div>
+		
+		<div id="main_div" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+		
+		  <!-- Connection -->
+		  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modal-header_title" aria-hidden="true" id="connectionManager">
+		  <div id="connectionManager_div" class="modal-dialog">
+			<div id="connectionManager_div_div" class="modal-content">
+			  <div id="modal_header" class="modal-header">
+				<button id="modal-header_button1" type="button" class="close" data-dismiss="modal">
+				  <span id="modal-header_button1_times" aria-hidden="true">×</span>
+				  <span id="modal-header_button1_close" class="sr-only">Close</span>
+				</button>
+				<h1 class="modal-title centeredthing" id="modal-header_title">Connection</h1>
+			  </div>
+			  <div id="modal-body" class="modal-body">
+				<h4 id="modal-body_title" class="centeredthing">Type the name of your Nao or its IP and click connect</h4>
+				<br>
+				
+				<form id="modal-body_form1" class="form-horizontal col-sm-8" role="form">
+				  <div id="modal-body_form1_div" class="input-group">
+					<input type="text" class="form-control" placeholder="e.g. nao, wilma, fred, 172.16.136.243" id="hostname" title="Type the name of the Nao (if it does not have a name, type nao) or its IP (press Nao&#39;s chest button to know its IP)">
+					<span id="modal-body_form1_addon" class="input-group-addon"></span>
+				  </div>
+				</form>
+				
+				<form id="modal-body_form2" class="form-horizontal col-sm-4" role="form">
+				  <button id="modal-body_form2_button" class="btn btn-info btn-block" type="button" onclick="connectToNao()" title="Connect to the selected Nao">Connect</button>
+				  <br>
+				</form>
+				
+				<div id="modal-body_div1" class="col-sm-12">
+				  <div id="conn_alert" class="alert alert-danger" role="alert">
+					<p id="conn_result"> <b>Connection failed!</b> It was not possible to connect with Nao. </p>
+				  </div>
+				</div>
+				<br><br><br><br><br><br>
+			  </div>
+			  <div id="modal-footer" class="modal-footer">
+				<button id="modal-footer_button" type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+				<!--<button type="button" class="btn btn-primary">Save changes</button>-->
+			  </div>
+			</div>
+		  </div>
+		  </div>
+		
+		  <!-- Help -->
+		  <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="helpInfo">
+		  <div id="help1" class="modal-dialog">
+			<div id="help2" class="modal-content">
+			  <div id="help3" class="modal-header">
+				<button id="help4" type="button" class="close" data-dismiss="modal">
+				  <span id="help5" aria-hidden="true">×</span>
+				  <span id="help6" class="sr-only">Close</span>
+				</button>
+				<h1 class="modal-title centeredthing" id="myModalLabel">Help</h1>
+			  </div>
+			  <div id="help7" class="modal-body">
+				<br>
+				<p>Type an order for Nao in the top text field and send it selecting "Send Command". Use this only if you know Nao's commands. If you don't, send the key word "commands" to get a list of all commands available, and send "help <i>command</i>" to get the data that is required for the command chosen.</p>
+				<br>
+				<p>Type some code in the middle text field and send it selecting "Inject Code" to make Nao execute it. Its use is not recommended if you can't program Python or you have never used the NaoQi module.</p>
+				<br>
+				<p>The answer form Nao to any of these command will be displayed in the bottom text field.</p>
+				<br>
+				<p>The use of these functions is not recommended for not advanced users, as they might cause an error in Nao's programme, and lose communication with it.</p>
+				<br>
+				<p>If you need more information, put the mouse over the desired field and a small tip will pop up giving clues of its use.</p>
+				<br>
+				<p>Click "Close Help" to leave help and return to the main screen.</p>
+				<br>
+			  </div>
+			  <div id="help8" class="modal-footer">
+				<button id="help9" type="button" class="btn btn-primary" data-dismiss="modal">Close Help</button>
+				<!--<button type="button" class="btn btn-primary">Save changes</button>-->
+			  </div>
+			</div>
+		  </div>
+		  </div>
+		
+		  <h1 id="maintitle" class="page-header centeredthing">Only for Advanced Users</h1>
+  		  <div id="command_div" class="col-xs-12 col-md-12 col-lg-12">
+			<div id="command_div_div" class="input-group">
+			  <textarea class="form-control" rows="5" data-toggle="tooltip" title="Type here the command you want to send" id="commands"></textarea>
+			  <span id="command_span" class="input-group-btn">
+				<button id="command_button" onclick="getData(&#39;commands&#39;)" class="btn btn-primary extratall" type="button" data-toggle="tooltip" title="Click here to send raw commands to the Nao">Send Command</button>
+			  </span>
+			</div><!-- /input-group -->
+			<br>
+		  </div>
+		  <div id="code_div" class="col-xs-12 col-md-12 col-lg-12">
+			<div id="code_div_div" class="input-group">
+			  <textarea class="form-control" rows="5" data-toggle="tooltip" title="Type here the code you want to execute in the Nao" id="execute"></textarea>
+			  <span id="code_span" class="input-group-btn">
+				<button id="code_button" onclick="getData(&#39;execute&#39;)" class="btn btn-primary extratallandwider" type="button" data-toggle="tooltip" title="Click here to execute the code in the Nao">Inject Code</button>
+			  </span>
+			</div><!-- /input-group -->
+			<br>
+		  </div>
+		  <div id="answer_div" class="col-xs-12 col-md-12 col-lg-12">
+			<div id="answer_div_div" class="input-group">
+			  <span id="answer_span" class="input-group-addon label-primary extratallandwider whitetext" data-toggle="tooltip" title="This is the answer from the Nao to your command"> Answer </span>
+			  <textarea class="form-control" rows="5" data-toggle="tooltip" title="This is the answer from the Nao to your command" id="answer"></textarea>
+			</div><!-- /input-group -->
+			<br>
+		  </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./Control your Nao_files/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> <!-- Import jquery from Google CDN -->
+    <script src="./Control your Nao_files/bootstrap.min.js"></script>
+    <!--<script src="control/js/docs.min.js"></script>-->
+
+	<script> <!-- Change appearance when resizing -->
+	window.addEventListener("resize", selectAppeareance); <!-- Waits for resizement of the screen -->
+	
+	function selectAppeareance() {
+		if ($(window).width() < 751) {
+			// do something for extra small screens (smartphones, etc.)
+			document.getElementById('menu_xs').style.display = 'block';
+			document.getElementById('menu_sm').style.display = 'none';
+		} else {
+			// do something for not extra small screens
+			document.getElementById('menu_xs').style.display = 'none';
+			document.getElementById('menu_sm').style.display = 'block';
+		}
+	}
+	
+	window.onload = selectAppeareance;
+	</script>
+	
+	<script> <!-- Used to get all the data depending on the field selected -->
+	function getData(str) {
+		//console.log(str); //Used for debugging
+		if (str.length == 0) {
+			//Error, something happened
+			return;
+		}
+		var error = false;
+		var res = str.split(" ");
+		var mssg = "";
+		switch(res[0]) {
+			case "commands":
+				var commands = document.getElementById("commands").value;
+				if(commands.length == 0){ error = true; }
+				mssg = commands;
+				break;
+			case "execute":
+				var execute = document.getElementById("execute").value;
+				if(execute.length == 0){ error = true; }
+				execute = execute.replace(/"/g, "'");
+				console.log(execute);
+				mssg = mssg.concat("exec ",execute);
+				break;
+			default:
+				error = true;
+		}
+		if (!error) {
+			sendData(mssg);
+		}
+	}
+	</script>
+	
+	<script> <!-- Used to send commands to php which will communicate with the nao -->
+	  function sendData(str) {
+		console.log(str); //Used for debugging
+		if (str.length == 0) {
+		  document.getElementById("answer").innerHTML = "";
+		  return;
+		} else if (str == "rec" || str == "filerec" || str == "vid" || str == "filevid" || str == "ping2") {
+			sendData2(str);
+			return;
+		}
+		if (window.XMLHttpRequest) {
+		  // code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp = new XMLHttpRequest();
+		} else { // code for IE6, IE5
+		  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+		  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var answer = xmlhttp.responseText;
+			console.log(answer);
+			saveData("Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], PhpFile:[test.php], Argument:[dataN:(" + str + ")], Answer:[" + answer + "]");
+			if (xmlhttp.responseText.slice(0,17) == "Connection_Error:") {
+			  document.getElementById("conn_alert").className = "alert alert-danger";
+			  document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> It was not possible to connect with Nao.";
+			  document.getElementById('conn_mngr').click();
+			} else {
+			  document.getElementById("answer").innerHTML = xmlhttp.responseText;
+			}
+		  }
+		}
+		xmlhttp.open("GET","test.php?dataN="+str,true);
+		xmlhttp.send();
+	  }
+
+	  function sendData2(str) {
+		console.log(str); //Used for debugging
+		if (str.length == 0) {
+		  document.getElementById("answer").innerHTML = "";
+		  return;
+		}
+		if (window.XMLHttpRequest) {
+		  // code for IE7+, Firefox, Chrome, Opera, Safari
+		  xmlhttp = new XMLHttpRequest();
+		} else { // code for IE6, IE5
+		  xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		console.log("sendData2");
+		xmlhttp.onreadystatechange = function() {
+		  if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			var answer = xmlhttp.responseText;
+			console.log("answer:", answer);
+			saveData("Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], PhpFile:[test.php], Argument:[dataN:(" + str + ")], Answer:[" + answer + "]");
+			if (xmlhttp.responseText.slice(0,17) == "Connection_Error:") {
+			  document.getElementById("conn_alert").className = "alert alert-danger";
+			  document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> It was not possible to connect with Nao.";
+			  document.getElementById('conn_mngr').click();
+			} else {
+			  document.getElementById("answer").innerHTML = xmlhttp.responseText;
+			}
+		  }
+		}
+		xmlhttp.open("GET","test3.php?dataN="+str,true);
+		xmlhttp.send();
+	  }
+	</script>
+	
+	<script> <!-- Tries to connect to a new address -->
+	function connectToNao() { 
+		var hostname = document.getElementById("hostname").value;
+		if (hostname.length == 0) {
+			document.getElementById("conn_alert").className = "alert alert-danger";
+			document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> The host name field is empty.";
+		} else {
+			if (window.XMLHttpRequest) {
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp = new XMLHttpRequest();
+			} else { // code for IE6, IE5
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			xmlhttp.onreadystatechange = function() {
+				if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var answer = xmlhttp.responseText;
+					console.log(answer);
+					saveData("Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], PhpFile:[connect.php], Argument:[hostname:(" + hostname + ")], Answer:[" + answer + "]");
+					if (answer.split(" ")[0] == "Success") {
+						document.getElementById("conn_alert").className = "alert alert-success";
+						document.getElementById("conn_result").innerHTML = "<b>Connection successfull!</b> You can start controling Nao.";
+					} else {
+						document.getElementById("conn_alert").className = "alert alert-danger";
+						document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> The IP or host name typed are wrong.";
+					}
+				}
+			}
+			xmlhttp.open("GET","connect.php?hostname="+hostname,true);
+			xmlhttp.send();
+		}
+	}
+	
+	function testConnection() {
+		if (window.XMLHttpRequest) {
+			// code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else { // code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+				var answer = xmlhttp.responseText;
+				saveData("Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], PhpFile:[connect.php], Argument:[hostname:()], Answer:[" + answer + "]");
+				if (answer.split(" ")[0] == "Success") {
+					document.getElementById("conn_alert").className = "alert alert-success";
+					document.getElementById("conn_result").innerHTML = "<b>Connection successfull!</b> Your Nao is already connected.";
+				} else {
+					document.getElementById("conn_alert").className = "alert alert-danger";
+					document.getElementById("conn_result").innerHTML = "<b>Connection failed!</b> It was not possible to connect with Nao.";
+				}
+			}
+		}
+		xmlhttp.open("GET","connect.php?hostname=",true);
+		xmlhttp.send();
+	}
+	</script>
+	
+	<script> <!-- Saves the data for data mining -->
+	document.onclick = function() {
+		var input_values = Array.prototype.map.call(document.getElementsByTagName("input"), function(inp){ return "(" + inp.id + ": " + inp.value + ")" }).join(",");
+		var select_values = Array.prototype.map.call(document.getElementsByTagName("select"), function(inp){ return "(" + inp.id + ": " + inp.value + ")" }).join(",");
+		var textarea_values = Array.prototype.map.call(document.getElementsByTagName("textarea"), function(inp){ return "(" + inp.id + ": " + inp.value + ")" }).join(",");
+		var str = "Time:[" + new Date().toUTCString() + "], Address:[" + window.location.href + "], Tag:[" + window.event.srcElement.tagName + "], Id:[" + window.event.srcElement.id + "], Value:[" + window.event.srcElement.value + "], Class:[" + window.event.srcElement.class + "], InputValues:[" + input_values + "], SelectValues:[" + select_values + "], TextareaValues:[" + textarea_values + "]";
+		saveData(str);
+	}
+	
+	function saveData(str) {
+		var xmlhttp;
+		if (str.length == 0) {
+		  return;
+		}
+		if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
+			xmlhttp = new XMLHttpRequest();
+		} else { // code for IE6, IE5
+			xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		}
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
+				//console.log(xmlhttp.responseText);
+			}
+		}
+		xmlhttp.open("GET","saveToFile.php?datatosave="+str,true);
+		xmlhttp.send();
+	}
+	</script>
+  
+</body></html>

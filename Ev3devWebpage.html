@@ -1,0 +1,108 @@
+<html>
+
+<head>
+<style>
+#header {
+	background-color: black;
+	color:white;
+	text-align: center;
+	padding:5px;
+}
+#section {
+	background-color: white;
+	color:black;
+	width:25%;
+	float:left;
+	padding:10px;
+}
+#section1 {
+	background-color:white;
+	color:black;
+	width:30%;
+	float:left;
+	padding:10px;
+}
+</style>
+    
+<script>
+    function psp1(val){
+        document.getElementById("sp1").innerHTML=val;}
+    function psp2(val){
+        document.getElementById("sp2").innerHTML=val;}
+    function psp3(val){
+        document.getElementById("sp3").innerHTML=val;}
+    function psp4(val){
+        document.getElementById("sp4").innerHTML=val;}
+</script>
+</head>
+
+<header>
+<title>Welcome to the EV3 Controller</title>
+</header>
+
+
+<body>
+<div id="header">
+<h1>EV3 Control</h1>
+Welcome to the Ev3dev WebController<br><hr>
+</div>
+
+<div id="section">
+<form method="POST" action="/motor">
+<label>Motor Control: </label><br><hr>
+Motor A <input type="range" name="Speed0" min="-100" max="100" value="50" onchange="psp1(this.value)"><p id="sp1"></p><br>
+Motor B <input type="range" name="Speed1" min="-100" max="100" value="0" onchange="psp2(this.value)"><br>
+Motor C <input type="range" name="Speed2" min="-100" max="100" value="0" onchange="psp3(this.value)"><br>
+Motor D <input type="range" name="Speed3" min="-100" max="100" value="0" onchange="psp4(this.value)"><br>
+<select name="direction">
+<option value="CL">clockwise</option>
+<option value="CCL">counter-clockwise</option>
+</select>
+<input type="submit" name="cmd" value="run"/>
+<input type="submit" name="cmd" value="stop"/>
+</form>
+</div>
+
+<div id="section1">
+<form method="POST" action="/led">
+<label>LED Control: </label><br><hr>
+Left Red <input type="range" name="LEDLR" min="0" max="100" value="10"><br>
+Right Red <input type="range" name="LEDRR" min="0" max="100" value="10"><br>
+Left Green <input type="range" name="LEDLG" min="0" max="100" value="10"><br>
+Right Green <input type="range" name="LEDRG" min="0" max="100" value="10"><br>
+<input type="submit" name="cmd" value="update"/>
+</form>
+</div>
+
+<div id = "section">
+<form method="POST" action="/BotSpeak">
+<label>BotSpeak Command(s): </label><br><hr>
+<textarea name="BotSpeak" rows="10" cols="25">
+SET PWM[0],55
+WAIT 1000
+SET PWM[0],0
+</textarea>
+<br>
+<input type="submit" name="RunBS" value="update"/>
+</form>
+</div>
+
+<div id="section">
+<form method="GET" action="/sensor">
+<label>Sensor Readout:</label><br><hr>
+Distance Sensor <textarea name="IR" rows="1" cols="4" readonly>
+</textarea> cm <br>
+Gyro Sensor <textarea name="Gyro" rows="1" cols="4" readonly>
+</textarea><br>
+Angle Sensor <textarea name="Angle" rows="1" cols="4" readonly>
+</textarea> Degrees <br>
+Touch Sensor <textarea name="Touch" rows="1" cols="4" readonly>
+</textarea> <br>
+<input type="submit" name="getSensor" value="Get Sensor Value"/>
+</form>
+</div>
+
+
+
+</body>
+</html>

@@ -11,7 +11,7 @@
 #section {
 	background-color: white;
 	color:black;
-	width:25%;
+	width:35%;
 	float:left;
 	padding:10px;
 }
@@ -46,11 +46,11 @@
 <h1>EV3 Control</h1>
 Welcome to the Ev3dev WebController<br><hr>
 </div>
-
 <div id="section">
+<label>Motor Control: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Motor Speed:</label><br><hr>
+<div id="control" style="float:left;">
 <form method="POST" action="/motor">
-<label>Motor Control: </label><br><hr>
-Motor A <input type="range" name="Speed0" min="-100" max="100" value="50" onchange="psp1(this.value)"><p id="sp1"></p><br>
+Motor A <input type="range" name="Speed0" min="-100" max="100" value="50" onchange="psp1(this.value)"><br>
 Motor B <input type="range" name="Speed1" min="-100" max="100" value="0" onchange="psp2(this.value)"><br>
 Motor C <input type="range" name="Speed2" min="-100" max="100" value="0" onchange="psp3(this.value)"><br>
 Motor D <input type="range" name="Speed3" min="-100" max="100" value="0" onchange="psp4(this.value)"><br>
@@ -61,6 +61,13 @@ Motor D <input type="range" name="Speed3" min="-100" max="100" value="0" onchang
 <input type="submit" name="cmd" value="run"/>
 <input type="submit" name="cmd" value="stop"/>
 </form>
+</div>
+<div id="speed" style="line-height:60%;">
+<textarea id="sp1" rows="1" cols="3" style="height:20px;"></textarea><br><br>
+<textarea id="sp2" rows="1" cols="3" style="height:20px;"></textarea><br><br>
+<textarea id="sp3" rows="1" cols="3" style="height:20px;"></textarea><br><br>
+<textarea id="sp4" rows="1" cols="3" style="height:20px;"></textarea><br><br>
+</div>
 </div>
 
 <div id="section1">

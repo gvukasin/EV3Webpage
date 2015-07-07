@@ -119,50 +119,31 @@ class TestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                     print "no sensor"
             print SENSORS
 
-            for i in range(0,len(existingSensors)):
+            data = {}; # dictionary containing all available sensor measurements
+            
+            for i in SENSORS:
                 # read sensor value
-                n = str(i+1)
-                Sens = open(sensorValue.format(SENSORS[n]))
+                Sens = open(sensorValue.format(SENSORS[i]))
                 theValue = Sens.read()
                 Sens.close
                 print theValue
 
-            # ask what sensor is plugged in - theSensor
-            # FIX THIS PERMISSION DENIED (ERROR 13) sometimes
-            sensor = open(drivername.format(SENSORS[n]),'r+')
-            theSensor = sensor.read()
-            sensor.close
-            print theSensor
+                # ask what sensor is plugged in - theSensor
+                # FIX THIS PERMISSION DENIED (ERROR 13) sometimes
+                sensor = open(drivername.format(SENSORS[i]))
+                theSensor = sensor.read()
+                sensor.close
+                print theSensor
+                print type(theSensor)
+                data[senNameChange(theSensor)] = theValue
 
-# send back sensor values to appropriate space on webpage
-            # ultrasonic sensor
-            if theSensor == 'ev3-uart-30':
-                sensorName = 'ultrasonic sensor'
-                
-            # gyro sensor   
-            elif theSensor == 'ev3-uart-32':
-                sensorName = 'gyro sensor'
-                                
-
-            # touch sensor 
-            elif theSensor == 'ev3-touch':
-                sensorName = 'touch sensor'
-                               
-
-            # ir sensor 
-            elif theSensor == 'ev3-uart-33':
-                sensorName = 'IR sensor'
-                           
-                                
-            # angle sensor
-            elif theSensor == 'ev3-analog':
-                sensorName = 'angle sensor'           
-
-
-        #print data
+    # send back sensor values to appropriate space on webpage                 
         self.send_response(200)
         self.end_headers()
-        self.wfile.write("Operation Successful")
+        data['success']='Operation Successful'
+        data = json.dumps(data)
+        print data
+        self.wfile.write(data)
         
 def changePort(portNum):
         if portNum in range(0,3):
@@ -177,6 +158,7 @@ def changePort(portNum):
                 else:
                         value = ''
                 return value
+            
 def WebServerThread():                  
         try:
                 #Create a web server and define the handler to manage the
@@ -191,6 +173,60 @@ def WebServerThread():
         except KeyboardInterrupt:
                 print '^C received, shutting down the web server'
                 server.socket.close()
+                
+
+def senNameChange(name):
+    print name 
+    # returns [sensor name, units]
+    # ultrasonic sensor
+    print (name == 'lego-ev3-us')
+    if name == 'lego-ev3-us':
+        return 'ultrasonic sensor'
+                    
+    # gyro sensor   
+    elif name == 'lego-ev3-gyro':
+        return 'gyro sensor'
+                                    
+    # touch sensor 
+    elif name == 'lego-ev3-touch':
+        return 'touch sensor'
+                                   
+    # ir sensor 
+    elif name == 'lego-ev3-ir':
+        return 'IR sensor'
+                                                 
+     # color sensor
+    elif name == 'lego-ev3-color':
+        return 'color sensor'
+    
+    # unknown sensor
+    else:
+        return 'unknown sensor'
+    
+
+def units(sensorName):
+    if name == 'ultrasonic sensor':
+        return 'cm'
+                    
+    # gyro sensor   
+    elif name == 'gyro sensor':
+        return 'degrees'
+                                    
+    # touch sensor 
+    elif name == 'touch sensor':
+        return ''
+                                   
+    # ir sensor 
+    elif name == 'IR sensor':
+        return 'percent'
+                                                 
+     # color sensor
+    elif name == 'color sensor':
+        return 'percent'
+    
+    # unknown sensor
+    else:
+        return ''
 
 
 if __name__ == "__main__":

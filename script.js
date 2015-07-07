@@ -109,6 +109,10 @@ function test_handle(req) {
     // var elem4 = document.getElementById('s3');
     // var elem5 = document.getElementById('s4');
     elem1.innerHTML =  req.responseText;
+    // elem2.innerHTML =  req.responseText; 
+    // elem3.innerHTML =  req.responseText;
+    // elem4.innerHTML =  req.responseText;
+    // elem5.innerHTML =  req.responseText;
 
 
 }

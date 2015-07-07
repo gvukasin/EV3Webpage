@@ -1,0 +1,32 @@
+#header {
+	background-color: black;
+	color:white;
+	text-align: center;
+	padding:5px;
+}
+#MOTOR {
+	background-color: white;
+	color:black;
+	width:35%;
+	float:left;
+	padding:10px;
+    line-height: 20px;
+}
+#LED {
+	background-color:white;
+	color:black;
+	width:30%;
+	float:left;
+	padding:10px;
+    line-height: 20px;
+}
+#SENSOR {
+	background-color:white;
+	color:black;
+	width:30%;
+	float:left;
+	padding:10px;
+    line-height: 20px;
+}
+</style>
+    

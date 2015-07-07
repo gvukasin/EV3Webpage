@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>AJAX test</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body>
+
+<div id="header">
+<h1>EV3 Control</h1>
+Welcome to the Ev3dev WebController<br><hr>
+</div>
+
+
+<div id="MOTOR">
+<label>Motor Control: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Motor Speed:</label><br><hr>
+<div id="control" style="float:left;" >
+<form name="motor">
+Motor A <input type="range" name="Speed0" min="-100" max="100" value="0" onchange="psp1(this.value)">
+<span><textarea id="sp1" rows="1" cols="3" style="height:20px;">0</textarea></span><br><br>
+Motor B <input type="range" name="Speed1" min="-100" max="100" value="0" onchange="psp2(this.value)">
+<span><textarea id="sp2" rows="1" cols="3" style="height:20px;">0</textarea></span><br><br>
+Motor C <input type="range" name="Speed2" min="-100" max="100" value="0" onchange="psp3(this.value)">
+<span><textarea id="sp3" rows="1" cols="3" style="height:20px;">0</textarea></span><br><br>
+Motor D <input type="range" name="Speed3" min="-100" max="100" value="0" onchange="psp4(this.value)">
+<span><textarea id="sp4" rows="1" cols="3" style="height:20px;">0</textarea></span><br><br>
+<input type=button name="cmd" value="run" onClick="run_MOTOR()"/>
+<input type=button name="cmd" value="stop" onClick="stop_MOTOR()"/>
+</form>
+</div>
+</div>
+
+
+
+
+<div id="LED">
+<form name=led>
+<label>LED Control: </label><br><hr>
+<input type="range" name="range_value1" value="10" size="10" onchange="test_range1(this.value)">
+<span id="rangevalue1"></span><br><br>
+<input type="range" name="range_value2" value="10" size="10" onchange="test_range2(this.value)">
+<span id="rangevalue2"></span><br><br>
+<input type="range" name="range_value3" value="10" size="10" onchange="test_range3(this.value)">
+<span id="rangevalue3"></span><br><br>
+<input type="range" name="range_value4" value="10" size="10" onchange="test_range4(this.value)">
+<span id="rangevalue4"></span><br><br>
+<input type=button name="cmd" onClick="call_LED();" value="update" title="start"><br>
+</form>
+<div>
+<h2 id="test_result" style="color:red;"></h2><br>
+</div>
+</div>
+
+
+<p id="rangevalue"></p>
+
+<div id="SENSOR">
+<label>Sensor Readings: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </label><br><hr>
+<div id="control" style="float:left;" >
+<form name="sensor">
+Port 1:
+<span><textarea id="s1" rows="1" cols="10" style="height:20px;">0</textarea></span><br><br>
+Port 2:  
+<span><textarea id="s2" rows="1" cols="10" style="height:20px;">0</textarea></span><br><br>
+Port 3:
+<span><textarea id="s3" rows="1" cols="10" style="height:20px;">0</textarea></span><br><br>
+Port 4: 
+<span><textarea id="s4" rows="1" cols="10" style="height:20px;">0</textarea></span><br><br>
+<input type=button name="cmd" value="get" onClick="getSensor()"/>
+</form>
+</div>
+</div>
+
+</body>
+</html>

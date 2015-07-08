@@ -60,6 +60,7 @@ function get_motorspeed(){
     var data4=document.motor.Speed3.value;
     var data={device:'motor',motor0:data1,motor1:data2,motor2:data3,motor3:data4};
     return data;}
+    
 
 
 function run_MOTOR() {
@@ -80,13 +81,17 @@ function stop_MOTOR() {
 
 //show motor range value
 function psp1(val){
-document.getElementById("sp1").innerHTML=val;}
+document.getElementById("sp1").innerHTML=val;
+run_MOTOR();}
 function psp2(val){
-document.getElementById("sp2").innerHTML=val;}
+document.getElementById("sp2").innerHTML=val;
+run_MOTOR();}
 function psp3(val){
-document.getElementById("sp3").innerHTML=val;}
+document.getElementById("sp3").innerHTML=val;
+run_MOTOR();}
 function psp4(val){
-document.getElementById("sp4").innerHTML=val;}
+document.getElementById("sp4").innerHTML=val;
+run_MOTOR();}
 
 // show sensor value
 function show1(val){document.getElementById("s1").innerHTML=val;}

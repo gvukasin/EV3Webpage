@@ -89,13 +89,16 @@ class TestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                     motor = open(setMotorSpeed.format(MOTORS[port]),"w",0)
                     motor.write(data['motor{}'.format(i)] + '\n')
                     motor.close
-            if data['cmd']=='run':
-                motor = open(runMotor.format(MOTORS[port]),"w",0)
-                motor.write('run-forever')
-            else:# stop motor
-                motor = open(runMotor.format(MOTORS[port]),"w",0)
-                motor.write('stop')
-                motor.close
+                    if data['cmd']=='run':
+                        motor = open(runMotor.format(MOTORS[port]),"w",0)
+                        motor.write('run-forever')
+                    else:# stop motor
+                        motor = open(runMotor.format(MOTORS[port]),"w",0)
+                        motor.write('stop')
+                        motor.close
+                        
+               
+                        
 
 #HOW DO WE MAKE THIS CONTINUOUS?
 #HOW DO WE MAKE THIS FOR MULTIPLE SENSOR READINGS? create then print and array of strings? 
@@ -131,10 +134,12 @@ class TestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
                 # ask what sensor is plugged in - theSensor
                 # FIX THIS PERMISSION DENIED (ERROR 13) sometimes
                 sensor = open(drivername.format(SENSORS[i]))
+                print sensor
                 theSensor = sensor.read()
                 sensor.close
                 print theSensor
                 print type(theSensor)
+                print len(theSensor)
                 data[senNameChange(theSensor)] = theValue
 
     # send back sensor values to appropriate space on webpage                 
@@ -177,26 +182,27 @@ def WebServerThread():
 
 def senNameChange(name):
     print name 
+    print type(name)
     # returns [sensor name, units]
     # ultrasonic sensor
-    print (name == 'lego-ev3-us')
-    if name == 'lego-ev3-us':
+    #print (name == s)
+    if name.find('lego-ev3-us') == 0:
         return 'ultrasonic sensor'
                     
     # gyro sensor   
-    elif name == 'lego-ev3-gyro':
+    elif name.find('lego-ev3-gyro')==0:
         return 'gyro sensor'
                                     
     # touch sensor 
-    elif name == 'lego-ev3-touch':
+    elif name.find('lego-ev3-touch')==0:
         return 'touch sensor'
                                    
     # ir sensor 
-    elif name == 'lego-ev3-ir':
+    elif name.find('lego-ev3-ir')==0:
         return 'IR sensor'
                                                  
      # color sensor
-    elif name == 'lego-ev3-color':
+    elif name.find('lego-ev3-color')==0:
         return 'color sensor'
     
     # unknown sensor
